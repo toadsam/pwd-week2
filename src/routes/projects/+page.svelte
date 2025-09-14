@@ -1,13 +1,28 @@
-<!-- src/routes/projects/+page.svelte -->
 <script>
-  import Card from '$lib/Card.svelte';
   // @ts-ignore
-  let { data } = $props(); // { projects }
+  let { data } = $props();      // { item, slug }
+  let memo = $state('');
+
+  $effect(() => {
+    if (data.slug === 'memo') {
+      const saved = localStorage.getItem('memo');
+      if (saved) memo = saved;
+    }
+  });
+
+  function save() {
+    localStorage.setItem('memo', memo);
+    alert('저장 완료! ✅');
+  }
 </script>
 
-<h2>Projects</h2>
-{#each data.projects as p}
-  <Card title={p.title} summary={p.summary} href={`/projects/${p.slug}`} />
-{:else}
-  <p class="card">아직 등록된 프로젝트가 없습니다.</p>
-{/each}
+<section class="card">
+  <h2>{data.item.title}</h2>
+  <p>{data.item.body}</p>
+
+  {#if data.slug === 'memo'}
+    <textarea rows="6" bind:value={memo}></textarea>
+    <button onclick={save}>메모 저장 📝</button>
+    <p style="opacity:.6">브라우저 로컬에만 저장됩니다.</p>
+  {/if}
+</section>
