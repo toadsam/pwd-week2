@@ -1,7 +1,7 @@
 <!-- src/routes/+page.svelte -->
 <script>
   let name = $state('');
-  let welcome = $derived(name ? `Hello, ${name}!` : 'Welcome!');
+  let welcome = $derived(name ? `Hello, ${name}!` : 'Welcome!!!');
 
   function randomize() {
     const msgs = ['웹 개발 재밌다!', 'SvelteKit 금방 익힘', 'Vercel로 바로 배포!'];
