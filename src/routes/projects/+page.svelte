@@ -12,17 +12,17 @@
 
   function save() {
     localStorage.setItem('memo', memo);
-    alert('저장 완료! ✅');
+    alert('💾 저장 완료!');
   }
 </script>
 
 <section class="card">
-  <h2>{data.item.title}</h2>
+  <h2 style="font-size:1.8rem;">{data.item.title}</h2>
   <p>{data.item.body}</p>
 
   {#if data.slug === 'memo'}
     <textarea rows="6" bind:value={memo}></textarea>
     <button onclick={save}>메모 저장 📝</button>
-    <p style="opacity:.6">브라우저 로컬에만 저장됩니다.</p>
+    <p style="opacity:.7; font-size:.9rem">⚠️ 이 메모는 브라우저 로컬에만 저장됩니다.</p>
   {/if}
 </section>
