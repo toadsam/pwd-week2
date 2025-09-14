@@ -1,6 +1,7 @@
 <!-- src/routes/projects/+page.svelte -->
 <script>
   import Card from '$lib/Card.svelte';
+  // @ts-ignore
   let { data } = $props(); // { projects }
 </script>
 

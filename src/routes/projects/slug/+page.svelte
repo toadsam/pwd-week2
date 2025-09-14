@@ -1,5 +1,6 @@
 <!-- src/routes/projects/[slug]/+page.svelte -->
 <script>
+  // @ts-ignore
   let { data } = $props();      // { item, slug }
   let memo = $state('');
 
